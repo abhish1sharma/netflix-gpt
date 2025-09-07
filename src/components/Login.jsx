@@ -9,6 +9,8 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { netflixBg } from "../utils/constants";
+import { avatar } from "../utils/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -39,7 +41,7 @@ const Login = () => {
 
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/49032373?v=4",
+            photoURL: avatar,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = user;
@@ -85,11 +87,7 @@ const Login = () => {
     <div>
       <Header />
       <div>
-        <img
-          className=""
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/8d617e19-3c3c-4c28-8998-c9b14dbc7200/web/IN-en-20250901-TRIFECTA-perspective_48d84d4e-9558-46b8-a0f3-8b2dc8478431_large.jpg"
-          alt="Background netflix"
-        />
+        <img className="" src={netflixBg} alt="Background netflix" />
       </div>
 
       <form
