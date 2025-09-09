@@ -5,11 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
 import { netflixLogo } from "../utils/constants";
+import { toggleGptSeachView } from "../utils/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const user = useSelector((store) => store.user);
+
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSeachView());
+  };
 
   const handleSignout = () => {
     signOut(auth)
@@ -39,9 +45,18 @@ const Header = () => {
     <div className="absolute  w-screen p-8 y-2 bg-gradient-to-b from-black z-10 flex justify-between">
       <img className="w-44" src={netflixLogo} alt="netflix Logo" />
       {user && (
-        <div className="flex">
-          <img className="w-10 h-10 mt-5" src={user.photoURL} alt="" />
-          <button className="font-bold text-white" onClick={handleSignout}>
+        <div className="flex justify-center items-center gap-5">
+          <button
+            className="px-10 py-1 bg-gray-400 text texx-white cursor-pointer rounded-sm"
+            onClick={handleGptSearchClick}
+          >
+            GPT search
+          </button>
+          <img className="w-10 h-10" src={user.photoURL} alt="" />
+          <button
+            className="font-bold text-white cursor-pointer"
+            onClick={handleSignout}
+          >
             Signout
           </button>
         </div>
