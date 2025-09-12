@@ -4,23 +4,33 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
-import { netflixLogo } from "../utils/constants";
+import { LANGUAGES, netflixLogo } from "../utils/constants";
 import { toggleGptSeachView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/appConfigSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
+  const isGptPage = useSelector((store) => store.gpt.showGptSearch);
+  const currentLanguage = useSelector((store) => store.appConfig.lang);
 
   const handleGptSearchClick = () => {
     dispatch(toggleGptSeachView());
   };
 
+  const handleLanguageChange = (e) => {
+    // console.log("e>", e.target.value);
+    dispatch(changeLanguage(e.target.value));
+  };
+
   const handleSignout = () => {
     signOut(auth)
       .then(() => {})
-      .catch((error) => {});
+      .catch((error) => {
+        console.log("error", error);
+      });
   };
 
   useEffect(() => {
@@ -46,11 +56,26 @@ const Header = () => {
       <img className="w-44" src={netflixLogo} alt="netflix Logo" />
       {user && (
         <div className="flex justify-center items-center gap-5">
+          {isGptPage && (
+            <select
+              name=""
+              id=""
+              className="bg-black text-white"
+              onChange={handleLanguageChange}
+              value={currentLanguage}
+            >
+              {LANGUAGES.map((language) => (
+                <option key={language.id} value={language.identifier}>
+                  {language.name}
+                </option>
+              ))}
+            </select>
+          )}
           <button
             className="px-10 py-1 bg-gray-400 text texx-white cursor-pointer rounded-sm"
             onClick={handleGptSearchClick}
           >
-            GPT search
+            {isGptPage ? "Homepage" : "GPT search"}
           </button>
           <img className="w-10 h-10" src={user.photoURL} alt="" />
           <button

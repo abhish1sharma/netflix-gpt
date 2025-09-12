@@ -20,5 +20,10 @@ export const API_OPTIONS = {
   },
 };
 
+export const IMG_CDN = "https://image.tmdb.org/t/p/w500";
 
-export const IMG_CDN ="https://image.tmdb.org/t/p/w500"
+export const LANGUAGES = [
+  { id: 1, identifier: "en", name: "English" },
+  { id: 2, identifier: "hindi", name: "Hindi" },
+  { id: 3, identifier: "esp", name: "Spanish" },
+];
