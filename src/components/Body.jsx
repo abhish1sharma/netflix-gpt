@@ -16,6 +16,7 @@ const Body = () => {
 
   return (
     <div>
+      <title>NetflixGPT</title>
       <RouterProvider router={appRouter} />
     </div>
   );
