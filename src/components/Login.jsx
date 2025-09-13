@@ -86,12 +86,16 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div>
-        <img className="" src={netflixBg} alt="Background netflix" />
+      <div className="">
+        <img
+          className=" w-full objec-cover h-screen"
+          src={netflixBg}
+          alt="Background netflix"
+        />
       </div>
 
       <form
-        className="w-1/4 bg-black opacity-75  absolute top-1/2 left-1/2 -translate-1/2 text-white p-16 flex justify-center items-start flex-col rounded-lg"
+        className="md:w-1/4 w-full bg-black opacity-75  absolute top-1/2 left-1/2 -translate-1/2 text-white p-16 flex justify-center items-start flex-col rounded-lg"
         onSubmit={(e) => e.preventDefault()}
       >
         <h1 className="font-bold text-2xl self-start ml-3 mb-5">

@@ -5,8 +5,12 @@ import GptSearchBar from "./GptSearchBar";
 const GptSearch = () => {
   return (
     <div>
-      <div className="fixed -z-10">
-        <img className="" src={netflixBg} alt="Background netflix" />
+      <div className="fixed -z-10 pt-[0%] w-full">
+        <img
+          className="h-screen object-cover md:w-full "
+          src={netflixBg}
+          alt="Background netflix"
+        />
       </div>
       <GptSearchBar />
       <GptMovieSuggestions />

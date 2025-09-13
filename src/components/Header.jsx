@@ -52,10 +52,14 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="absolute  w-screen p-8 y-2 bg-gradient-to-b from-black z-10 flex justify-between">
-      <img className="w-44" src={netflixLogo} alt="netflix Logo" />
+    <div className="absolute w-screen p-8 y-2 bg-gradient-to-b from-black z-10 flex justify-between flex-wrap">
+      <img
+        className="w-44 mx-auto  md:mx-0"
+        src={netflixLogo}
+        alt="netflix Logo"
+      />
       {user && (
-        <div className="flex justify-center items-center gap-5">
+        <div className="flex justify-between items-center gap-5">
           {isGptPage && (
             <select
               name=""
@@ -77,7 +81,7 @@ const Header = () => {
           >
             {isGptPage ? "Homepage" : "GPT search"}
           </button>
-          <img className="w-10 h-10" src={user.photoURL} alt="" />
+          <img className="w-10 h-10 hidden md:block" src={user.photoURL} alt="" />
           <button
             className="font-bold text-white cursor-pointer"
             onClick={handleSignout}

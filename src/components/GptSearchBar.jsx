@@ -20,7 +20,7 @@ const GptSearchBar = () => {
       const data = await response.json();
       return data.results;
     } catch (error) {
-      console.log("Erro>>", error);
+      console.log("Error>>", error);
     }
   };
 
@@ -46,13 +46,13 @@ const GptSearchBar = () => {
           { role: "user", content: query },
         ],
       });
-      console.log(response.choices[0].message.content);
+      // console.log(response.choices[0].message.content);
       const gptResult = response.choices[0].message.content.split(",");
 
       const promiseArray = gptResult.map((movie) => getMovieInfoByName(movie));
 
       const tmdbResults = await Promise.all(promiseArray);
-      console.log("tmdb Results>>", tmdbResults);
+      // console.log("tmdb Results>>", tmdbResults);
       dispatch(
         addGptMovies({ movieNames: gptResult, movieResults: tmdbResults })
       );
@@ -64,7 +64,7 @@ const GptSearchBar = () => {
   return (
     <div className="flex justify-center items-center h-screen w-full">
       <form
-        className="bg-black p-20 rounded-2xl"
+        className="bg-black md:p-20 rounded-2xl"
         onSubmit={(e) => e.preventDefault()}
       >
         <input

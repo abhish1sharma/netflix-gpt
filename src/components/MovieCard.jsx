@@ -4,7 +4,7 @@ import { IMG_CDN } from "../utils/constants";
 const MovieCard = ({ posterPath }) => {
   if (!posterPath) return null;
   return (
-    <div className="w-48 px-4">
+    <div className="md:w-48 w-32 px-4">
       <img src={IMG_CDN + posterPath} alt="Movie Card" />
     </div>
   );
